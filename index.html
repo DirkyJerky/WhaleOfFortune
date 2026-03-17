@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Whale of Fortune</title>
+  </head>
+  <body class="bg-base-200 min-h-screen flex flex-col pt-10 px-4 items-center">
+    
+    <div class="card w-96 bg-base-100 shadow-xl border border-base-300">
+      <div class="card-body items-center text-center">
+        <h2 class="card-title text-3xl font-bold text-primary mb-2">Hello Tailwind!</h2>
+        <p class="text-base-content mb-6">This is a single-file Vite application styled with Tailwind CSS and DaisyUI components.</p>
+        
+        <div class="w-full flex justify-center gap-4 mb-6">
+          <div class="badge badge-secondary badge-outline px-4 py-3">Tailwind v3</div>
+          <div class="badge badge-accent badge-outline px-4 py-3">DaisyUI</div>
+        </div>
+
+        <div class="card bg-base-200 border border-base-300 w-full mb-6">
+          <div class="card-body p-4 flex flex-row justify-between items-center">
+            <span class="font-semibold">Counter:</span>
+            <span id="counter-value" class="text-2xl font-mono text-primary font-bold">0</span>
+          </div>
+        </div>
+
+        <div class="card-actions">
+          <button id="counter-button" class="btn btn-primary w-full shadow-lg shadow-primary/20">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>
+            Increment Counter
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Background Decoration to look cool -->
+    <div class="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/20 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/20 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
