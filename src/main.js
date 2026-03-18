@@ -1,5 +1,4 @@
 import { roles } from './roles.js';
-import './style.css';
 
 document.addEventListener('DOMContentLoaded', () => {
   // Elements
@@ -135,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </figure>
             
             <div class="flex-1 min-w-0">
-              <h2 class="card-title text-xl font-bold tracking-tight bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent w-max max-w-full">${role.name}</h2>
+              <h2 class="card-title text-xl font-semibold tracking-tight text-base-content w-max max-w-full">${role.name}</h2>
               <p class="text-sm text-base-content/80 mt-1 leading-snug">${role.ability}</p>
             </div>
             
@@ -170,4 +169,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Run initialization
   init();
+
+  // Reveal the app smoothly after initialization to prevent Flash of Unstyled Content
+  requestAnimationFrame(() => {
+    document.body.classList.remove('opacity-0');
+  });
 });

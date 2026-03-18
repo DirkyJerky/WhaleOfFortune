@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/style.css">
   <style>
     body {
       font-family: 'Outfit', sans-serif;
@@ -23,7 +24,7 @@
 </head>
 
 <body
-  class="bg-base-300 min-h-[100dvh] flex flex-col items-center relative overflow-x-hidden text-base-content selection:bg-primary selection:text-primary-content">
+  class="bg-base-300 min-h-[100dvh] flex flex-col items-center relative overflow-x-hidden text-base-content selection:bg-primary selection:text-primary-content transition-opacity duration-50 ease-in-out">
 
   <!-- Premium Background Effects -->
   <div
@@ -127,11 +128,11 @@
 
       <!-- Placeholder text before any interactions -->
       <div id="results-placeholder"
-        class="flex flex-col items-center justify-center h-full min-h-[10rem] opacity-40 text-center gap-3">
+        class="flex flex-col items-center justify-start pt-8 h-full min-h-[10rem] opacity-40 text-center gap-3">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-base-content" fill="none" viewBox="0 0 24 24"
           stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
         </svg>
         <p class="text-sm font-medium">Select a team and draw</p>
       </div>
