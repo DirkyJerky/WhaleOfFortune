@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const imgSrc = `https://script.bloodontheclocktower.com/src/assets/icons/${role.edition}/${role.id}${alignment}.webp`;
 
       const cardHTML = `
-        <div class="role-card card card-side bg-base-100 shadow-xl border border-base-200 w-full animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out rounded-3xl cursor-pointer transition-all ring-2 ring-transparent ring-offset-2 ring-offset-base-300 hover:border-primary/50" style="animation-delay: ${index * 150}ms; animation-fill-mode: both;">
+        <div class="role-card select-none card card-side bg-base-100 shadow-xl border border-base-200 w-full animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out rounded-3xl cursor-pointer transition-all ring-4 ring-transparent hover:border-primary/50" style="animation-delay: ${index * 75}ms; animation-fill-mode: both;">
           <div class="card-body p-4 sm:p-5 flex-row items-center gap-4 pointer-events-none">
             
             <figure class="w-20 h-20 flex-shrink-0 bg-base-200 rounded-full border border-base-300 p-1">

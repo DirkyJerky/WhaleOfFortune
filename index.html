@@ -36,7 +36,7 @@
     class="fixed top-[40%] left-[50%] translate-x-[-50%] w-[100%] h-[40%] bg-accent/10 rounded-[100%] blur-[100px] -z-10 pointer-events-none">
   </div>
 
-  <main class="w-full max-w-md flex flex-col flex-1 px-6 py-10 z-10 gap-8">
+  <main class="w-full max-w-md flex flex-col px-6 py-10 z-10 gap-8 h-full">
 
     <!-- Header Section -->
     <header class="text-center space-y-2">
@@ -122,11 +122,12 @@
     <div class="divider before:bg-base-content/10 after:bg-base-content/10 my-2"></div>
 
     <!-- Results Section -->
-    <section id="results" class="flex flex-col gap-4 w-full flex-1 pb-8">
+    <section id="results" class="flex flex-col gap-4 w-full h-[500px] overflow-y-auto pb-4 pr-1 custom-scrollbar">
       <!-- Javascript will populate cards here -->
 
       <!-- Placeholder text before any interactions -->
-      <div id="results-placeholder" class="flex flex-col items-center justify-center h-40 opacity-40 text-center gap-3">
+      <div id="results-placeholder"
+        class="flex flex-col items-center justify-center h-full min-h-[10rem] opacity-40 text-center gap-3">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-base-content" fill="none" viewBox="0 0 24 24"
           stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
