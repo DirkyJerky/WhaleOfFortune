@@ -1,3 +1,5 @@
+// Generated from https://botc.app/backend/data
+// echo 'data...' | jq '.roles | [.[] | {id, name, team, edition, ability}]'
 export const roles = [
     {
         "id": "steward",
