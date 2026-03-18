@@ -510,20 +510,20 @@ export const roles = [
         "edition": "carousel",
         "ability": "On your 1st night, choose a player (not yourself): you become their alignment (you don't know which) even if drunk or poisoned."
     },
-    {
-        "id": "lunatic",
-        "name": "Lunatic",
-        "team": "outsider",
-        "edition": "bmr",
-        "ability": "You think you are a Demon, but you are not. The Demon knows who you are & who you choose at night."
-    },
-    {
-        "id": "drunk",
-        "name": "Drunk",
-        "team": "outsider",
-        "edition": "tb",
-        "ability": "You do not know you are the Drunk. You think you are a Townsfolk character, but you are not."
-    },
+    // {
+    //     "id": "lunatic",
+    //     "name": "Lunatic",
+    //     "team": "outsider",
+    //     "edition": "bmr",
+    //     "ability": "You think you are a Demon, but you are not. The Demon knows who you are & who you choose at night."
+    // },
+    // {
+    //     "id": "drunk",
+    //     "name": "Drunk",
+    //     "team": "outsider",
+    //     "edition": "tb",
+    //     "ability": "You do not know you are the Drunk. You think you are a Townsfolk character, but you are not."
+    // },
     {
         "id": "tinker",
         "name": "Tinker",
@@ -748,13 +748,13 @@ export const roles = [
         "edition": "carousel",
         "ability": "On night X, all Townsfolk are poisoned until dusk. [X Outsiders]"
     },
-    {
-        "id": "marionette",
-        "name": "Marionette",
-        "team": "minion",
-        "edition": "carousel",
-        "ability": "You think you are a good character, but you are not. The Demon knows who you are. [You neighbor the Demon]"
-    },
+    // {
+    //     "id": "marionette",
+    //     "name": "Marionette",
+    //     "team": "minion",
+    //     "edition": "carousel",
+    //     "ability": "You think you are a good character, but you are not. The Demon knows who you are. [You neighbor the Demon]"
+    // },
     {
         "id": "wraith",
         "name": "Wraith",
