@@ -1,27 +1,84 @@
-import { roles } from './roles.js';
+import { fetchRolesData, Role, allowed_character_types } from './roles.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // Elements
-  const teamSelect = document.getElementById('team-select');
-  const btnDraw1 = document.getElementById('btn-draw-1');
-  const btnDraw2 = document.getElementById('btn-draw-2');
-  const btnDraw3 = document.getElementById('btn-draw-3');
-  const resultsContainer = document.getElementById('results');
-  const resultsPlaceholder = document.getElementById('results-placeholder');
+  const teamSelect = document.getElementById('team-select')! as HTMLSelectElement;
+  const btnDraw1 = document.getElementById('btn-draw-1')! as HTMLButtonElement;
+  const btnDraw2 = document.getElementById('btn-draw-2')! as HTMLButtonElement;
+  const btnDraw3 = document.getElementById('btn-draw-3')! as HTMLButtonElement;
+  const resultsContainer = document.getElementById('results')!;
+  const resultsPlaceholder = document.getElementById('results-placeholder')!;
 
   // Logic Variables
-  let rolesByTeam = {};
+  let rolesData: Role[] = [];
+  let rolesByTeam: { [team: string]: Role[] } = {};
 
   // Initialization
-  function init() {
-    processRoles();
-    populateTeamSelect();
-    setupEventListeners();
+  async function init() {
+    try {
+      showLoadingState();
+
+      rolesData = await fetchRolesData();
+
+      processRoles(rolesData);
+      populateTeamSelect();
+      setupEventListeners();
+
+      showSuccessState();
+
+    } catch (error) {
+      showErrorState("Could not load role data. Please refresh the page to try again.");
+    }
+  }
+
+  function showLoadingState() {
+    btnDraw1.disabled = true;
+    btnDraw2.disabled = true;
+    btnDraw3.disabled = true;
+
+    if (resultsPlaceholder) {
+      resultsPlaceholder.style.display = 'none';
+    }
+
+    resultsContainer.insertAdjacentHTML('beforeend', `
+      <div id="loading-spinner" class="flex flex-col items-center justify-center pt-10 gap-6 opacity-70">
+        <span class="loading loading-spinner loading-lg text-primary scale-150"></span>
+        <p class="font-medium animate-pulse">Gathering the townsfolk...</p>
+      </div>
+    `);
+  }
+
+  function showSuccessState() {
+    btnDraw1.disabled = false;
+    btnDraw2.disabled = false;
+    btnDraw3.disabled = false;
+
+    const spinner = document.getElementById('loading-spinner');
+    if (spinner) spinner.remove();
+
+    if (resultsPlaceholder) {
+      resultsPlaceholder.style.display = 'flex';
+    }
+  }
+
+  function showErrorState(message: string) {
+    const spinner = document.getElementById('loading-spinner');
+    if (spinner) spinner.remove();
+
+    resultsContainer.innerHTML = `
+      <div class="flex flex-col items-center justify-start pt-8 h-full min-h-[10rem] text-error gap-3">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-error" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+        <p class="text-sm font-medium text-center">${message}</p>
+        <button onclick="window.location.reload()" class="btn btn-outline btn-error btn-sm mt-4">Reload Page</button>
+      </div>
+    `;
   }
 
   // 1. Parse and Group Roles by Team
-  function processRoles() {
-    rolesByTeam = roles.reduce((acc, role) => {
+  function processRoles(data: Role[]) {
+    rolesByTeam = data.reduce<{ [team: string]: Role[] }>((acc, role) => {
       const team = role.team;
       if (!acc[team]) {
         acc[team] = [];
@@ -36,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Clear existing options
     teamSelect.innerHTML = '';
 
-    const teams = Object.keys(rolesByTeam).sort();
+    const teams = allowed_character_types;
 
     teams.forEach(team => {
       const option = document.createElement('option');
@@ -65,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Draw Logic
-  function drawCharacters(count) {
+  function drawCharacters(count: number) {
     const selectedTeam = teamSelect.value;
     const availableRoles = [...(rolesByTeam[selectedTeam] || [])];
 
@@ -89,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderCards(selectedRoles);
   }
 
-  function displayMessage(message) {
+  function displayMessage(message: string) {
     if (resultsPlaceholder) {
       resultsPlaceholder.style.display = 'none';
     }
@@ -97,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 4. Render the Character Cards
-  function renderCards(selectedRoles) {
+  function renderCards(selectedRoles: Role[]) {
     // Hide placeholder if it hasn't been removed yet
     if (resultsPlaceholder) {
       resultsPlaceholder.style.display = 'none';
@@ -121,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
           alignment = "";
       }
 
-      const imgSrc = `https://script.bloodontheclocktower.com/src/assets/icons/${role.edition}/${role.id}${alignment}.webp`;
+      const imgSrc = `https://release.botc.app/resources/characters/${role.edition}/${role.id}${alignment}.webp`;
 
       const cardHTML = `
         <div class="role-card select-none card card-side bg-base-100 shadow-lg border border-base-200 w-full animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out rounded-3xl cursor-pointer transition-all ring-4 ring-transparent hover:border-primary/50" style="animation-delay: ${index * 75}ms; animation-fill-mode: both;">
