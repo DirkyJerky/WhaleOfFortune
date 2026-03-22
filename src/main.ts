@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     resultsContainer.insertAdjacentHTML('beforeend', `
       <div id="loading-spinner" class="flex flex-col items-center justify-center pt-10 gap-6 opacity-70">
         <span class="loading loading-spinner loading-lg text-primary scale-150"></span>
-        <p class="font-medium animate-pulse">Gathering the townsfolk...</p>
+        <p class="text-sm font-medium animate-pulse">Gathering the townsfolk...</p>
       </div>
     `);
   }
